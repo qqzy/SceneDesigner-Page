@@ -84,6 +84,7 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/tex-mml-chtml.js"></script>
   
 
 </head>
@@ -209,11 +210,26 @@
     <div class="hero-body">
       <h2 class="title">Methodology</h2>
       <div class="has-text-centered">
-        <img src="static/images/c-nocs-map.png" alt="" style="width:60%; height:auto;" loading="eager">
+        <img src="static/images/c-nocs-map.png" alt="CNOCS map representation: per-pixel normalized 3D coordinates on the object's cuboid surface" style="width:60%; height:auto;" loading="eager">
       </div>
-      <h2 class="subtitle">
-      We introduce a novel representation to encode 9-DoF Pose: the CNOCS map, For each pixel belonging to an object, the CNOCS map stores its normalized 3D coordinate on the surface of the corresponding cuboid.
-      </h2>
+      <div class="content">
+        <p>
+          We propose <strong>CNOCS</strong>, a representation for 9-DoF pose. For each pixel that belongs to an object, CNOCS stores its normalized 3D coordinates on the surface of the corresponding oriented cuboid, providing a compact and geometrically interpretable conditioning signal.
+        </p>
+        <h3 class="title is-4" style="margin-top:1rem;">Two-stage training</h3>
+        <ol>
+          <li><strong>Stage 1 — Base pose controllability.</strong> Train on the large-scale ObjectPose9D dataset to align pose conditions with the image generation process and acquire the fundamental 9-DoF control ability. The objective is defined in Equation (1).</li>
+          <li><strong>Stage 2 — Imbalance-aware fine-tuning.</strong> Fine-tune with reinforcement learning to mitigate data imbalance (e.g., rare back-facing poses). As in Equation (2), the objective maximizes a reward <em>r</em> that measures pose accuracy, improving fidelity on low-frequency, complex poses.</li>
+        </ol>
+      </div>
+      <div class="has-text-centered">
+        <img src="static/images/formula1.png" alt="Objective for Stage 1 (Equation 1)" style="width:60%; height:auto;" loading="eager">
+        <p class="is-size-6 has-text-grey">Equation (1): supervised objective in Stage 1</p>
+      </div>
+      <div class="has-text-centered" style="margin-top:0.75rem;">
+        <img src="static/images/formula2.png" alt="Objective for Stage 2 with reward r (Equation 2)" style="width:60%; height:auto;" loading="eager">
+        <p class="is-size-6 has-text-grey">Equation (2): reward-based objective in Stage 2</p>
+      </div>
     </div>
   </div>
 </section>
