@@ -214,7 +214,7 @@
       </div>
       <div class="content">
         <p>
-          We propose <strong>CNOCS</strong>, a representation for 9-DoF pose. For each pixel that belongs to an object, CNOCS stores its normalized 3D coordinates on the surface of the corresponding oriented cuboid, providing a compact and geometrically interpretable conditioning signal.
+          We propose <strong>CNOCS Map</strong>, a representation for 9-DoF pose. For each pixel that belongs to an object, CNOCS Map stores its normalized 3D coordinates on the surface of the corresponding oriented cuboid, providing a compact and geometrically interpretable conditioning signal.
         </p>
         <h3 class="title is-4" style="margin-top:1rem;">Two-stage training</h3>
         <ol>
@@ -241,6 +241,21 @@
       <img src="static/images/dataset_annotation.png" alt="" style="width:100%; height:auto;" loading="eager">
       <h2 class="subtitle">
       The pipeline takes a 2D image and masks as input and simultaneously estimates both the 3D point clouds and the orientation for the objects. Next, this information is used to fit oriented bounding boxes for each object. Finally, this process outputs the 9D poses, which define the precise location, size, and orientation of each object in 3D space.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light">
+  
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title">Experiments</h2>
+      <div class="has-text-centered">
+        <img src="static/images/exp.png" alt="CNOCS map representation: per-pixel normalized 3D coordinates on the object's cuboid surface" style="width:100%; height:auto;" loading="eager">
+      </div>
+      <h2 class="subtitle">
+      We compare SceneDesigner with state-of-the-art methods. LOOSECONTROL (LC) encodes pose information into 3D boxes with depth, an approach that can be ambiguous in certain scenarios. Continuous 3D Words (C3DW) directly encodes object azimuth as a vector injected into the network, but it lacks control over position and more complex orientations.
       </h2>
     </div>
   </div>
@@ -298,7 +313,7 @@
         </button>
       </div>
       <pre id="bibtex-code"><code>@inproceedings{SceneDesigner,
-        title={{SceneDesigner}:Controllable Multi-Object Image Generation with 9-DoF Pose Manipulation},
+        title={SceneDesigner: Controllable Multi-Object Image Generation with 9-DoF Pose Manipulation},
         author={Qin, Zhenyuan and Shuai, Xincheng and Ding, Henghui},
         booktitle={NeurIPS},
         year={2025}
